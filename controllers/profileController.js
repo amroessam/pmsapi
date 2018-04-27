@@ -1,9 +1,18 @@
 const mongoose = require('mongoose')
 const Profile = mongoose.model('Profile')
-
+const config = require('../config/config')
+const fs = require('fs')
+const path = require('path')
 module.exports = {
     index(req,res){
         res.send('PROFILE ROUTE')
+    },
+    initStatus(req,res){
+        res.send(process.env.API_INITIALIZED)
+    },
+    init(req,res){
+        process.env.API_INITIALIZED = true
+        res.send(process.env.API_INITIALIZED)
     },
     update(req,res){
         let update = {}

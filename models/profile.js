@@ -11,8 +11,8 @@ const profileSchema = mongoose.Schema({
 },{timestamps:true})
 
 
-profileSchema.statics.updateProfilee = (id,update,cb)=>{
-    Profile.findByIdAndUpdate(id,update,cb)
+profileSchema.statics.updateProfile = (id,update,cb)=>{
+    Profile.findByIdAndUpdate(id,update,{new:true},cb)
 }
 
 profileSchema.statics.createProfile = (newProfile,cb)=>{
@@ -24,7 +24,6 @@ profileSchema.statics.createProfile = (newProfile,cb)=>{
             cb(err)
         }
     })
-    // newProfile.save(cb)
 }
 
 const Profile = mongoose.model('Profile', profileSchema)

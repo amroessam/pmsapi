@@ -1,9 +1,11 @@
+//check if .env exists and use it if it does
+const config = require('./config/config')
+config.startup()
 //server configurations
 const express = require('express')
 const bodyparser = require('body-parser')
 const app = express()
 const router = express.Router()
-const config = require('./config/config')
 const mongoose = require('mongoose')
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
@@ -20,5 +22,5 @@ router.use('/milestone', r_milestone)
 router.use('/profile', r_profile)
 app.use('/api/v1', router)
 //server spin up
-app.set('port',config.API_PORT)
+app.set('port',process.env.API_PORT)
 app.listen(app.get('port'))

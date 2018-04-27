@@ -18,6 +18,6 @@ milestoneSchema.statics.getOneMilestone = (id,cb)=>{
     Milestone.findById(id, cb)
 }
 milestoneSchema.statics.updateMilestone = (id,update,cb)=>{
-    Milestone.findByIdAndUpdate(id,update,cb)
+    Milestone.findByIdAndUpdate(id,update,{new:true},cb)
 }
 const Milestone = mongoose.model('Milestone', milestoneSchema)
