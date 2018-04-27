@@ -12,6 +12,7 @@ module.exports = {
     },
     init(req,res){
         process.env.API_INITIALIZED = true
+        config.update()
         res.send(process.env.API_INITIALIZED)
     },
     update(req,res){
